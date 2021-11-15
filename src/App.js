@@ -8,6 +8,7 @@ import AddItem from './Pages/AddItem';
 import EditItem from './Pages/EditItem';
 import MyBuckets from './Pages/MyBuckets';
 import SingleItem from './Pages/SingleItem';
+import Navigation from './Components/Navigation';
 
 function App() {
   const [active, setActive] = useState(false)
@@ -16,16 +17,26 @@ function App() {
         setActive(!active);
     };
 
+    const [links, setLinks] = useState(true);
+  
+    const firstLinks = () => {
+            setLinks(true)
+    }
+    const secondLinks = () => {
+            setLinks(false)
+    }
+
   return (
     <div className="App font-Poppins">
       <Router>
+        <Navigation links={links} onClick={onClick} active={active}/>
         <Routes>
-          <Route path='/' element={<MyBuckets onClick={onClick} active={active}/>}/>
-          <Route path='/login' element={<Login onClick={onClick} active={active}/>}/>
-          <Route path='/register' element={<Register onClick={onClick} active={active}/>}/>
-          <Route path='/addItem' element={<AddItem onClick={onClick} active={active}/>}/>
-          <Route path='/updateItem' element={<EditItem onClick={onClick} active={active}/>}/>
-          <Route path='/singleItem' element={<SingleItem onClick={onClick} active={active}/>}/>
+          <Route path='/' element={<MyBuckets secondLinks={secondLinks}/>}/>
+          <Route path='/login' element={<Login firstLinks={firstLinks}/>}/>
+          <Route path='/register' element={<Register firstLinks={firstLinks}/>}/>
+          <Route path='/addItem' element={<AddItem secondLinks={secondLinks}/>}/>
+          <Route path='/updateItem' element={<EditItem secondLinks={secondLinks}/>}/>
+          <Route path='/singleItem' element={<SingleItem secondLinks={secondLinks}/>}/>
         </Routes>
         <Footer />
       </Router>
