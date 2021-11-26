@@ -33,6 +33,8 @@ function App() {
   
   useEffect(() => {
     const getProfile = async () => {
+      let info = localStorage.getItem("user-info");
+      info = JSON.parse(info);
       const config = {
         headers: {
             Authorization: info.token
@@ -57,7 +59,7 @@ function App() {
 
     
     getProfile();
-  }, [info.token, ])
+  }, [])
 
 
 
