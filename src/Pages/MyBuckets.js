@@ -15,7 +15,7 @@ function MyBuckets( {secondLinks, posts} ) {
         <>
            
 
-           <div className="md:container  md:mx-auto">
+           <div className="md:container  md:mx-auto ">
                 <div className=" my-24 px-9 max-w-7xl mx-auto">
                     <header className="text-center md:text-left mb-16">
                         <div className="flex md:flex-row justify-between flex-col  md:space-y-0 space-y-3 mb-4 md:mb-0">
@@ -30,7 +30,7 @@ function MyBuckets( {secondLinks, posts} ) {
                         {posts.length ? (
                             <Feed posts={posts} />
                             ) : (
-                            <p style={{ marginTop: "2rem" }}>
+                            <p style={{ marginTop: "2rem" }} className="h-72" >
                                 No posts to display.
                             </p>
                         )}
