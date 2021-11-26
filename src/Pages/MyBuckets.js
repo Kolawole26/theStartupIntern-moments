@@ -1,9 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import Feed from '../Components/Feed';
 
 
-function MyBuckets( {secondLinks} ) {
+function MyBuckets( {secondLinks, posts} ) {
 
     useEffect(() => {
         secondLinks()
@@ -25,80 +26,16 @@ function MyBuckets( {secondLinks} ) {
                         </div>
                         <p className="md:text-xl text-base mb-4">Here are items in your eventful moment bucket.</p>
                     </header>
-                    <div className=" grid md:grid-cols-2 grid-cols-1 gap-5">
-                            <div className="shadow-md p-6 rounded hover:bg-yellowBg">
-                                <h5 className=" text-base font-bold mb-4">Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero’s 1scentury BC text De Finibus Bonorum et Malorum.</h5>
-                                    <p className="md:text-base text-sm mb-8">
-                                        Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. “It’s not Latin, though it looks like it,
-                                        and it actually says nothing,” Before & After magazine answered a curious reader, “Its ‘words’ loosely approximate the frequency
-                                        with which letters occur in English, which is why at a glance it looks pretty real. Until, the prevailing view assumed lorem ipsum 
-                                        was born as a nonsense text. “It’s not Latin, though it looks like it, and it actually says nothing,” Before & After magazine answered 
-                                        a curious reader, “Its ‘words’ loosely approximate the frequency with which letters occur in English, which is why at a glance it looks pretty real.
-                                    </p>
-                                        
-                                        <div className="flex flex-col md:flex-row justify-between text-center md:text-left space-y-2 md:space-y-0 mb-3">
-                                        <Link to='singleItem' className="text-btn text-sm">View Details</Link>
-                                        <div className="flex flex-col md:flex-row md:space-x-11 space-y-2 md:space-y-0">
-                                                <p className="text-ash text-sm">20/05/2021</p>
-                                                <p className="text-sm">20/05/2025</p>
-                                            </div>
-                                        </div>
-                            </div>
-                            <div className="shadow-md p-6 rounded hover:bg-yellowBg">
-                                <h5 className=" text-base font-bold mb-4">Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero’s 1scentury BC text De Finibus Bonorum et Malorum.</h5>
-                                    <p className="md:text-base text-sm mb-8">
-                                        Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. “It’s not Latin, though it looks like it,
-                                        and it actually says nothing,” Before & After magazine answered a curious reader, “Its ‘words’ loosely approximate the frequency
-                                        with which letters occur in English, which is why at a glance it looks pretty real. Until, the prevailing view assumed lorem ipsum 
-                                        was born as a nonsense text. “It’s not Latin, though it looks like it, and it actually says nothing,” Before & After magazine answered 
-                                        a curious reader, “Its ‘words’ loosely approximate the frequency with which letters occur in English, which is why at a glance it looks pretty real.
-                                    </p>
-                                        
-                                        <div className="flex flex-col md:flex-row justify-between text-center md:text-left space-y-2 md:space-y-0 mb-3">
-                                        <Link to='singleItem' className="text-btn text-sm">View Details</Link>
-                                        <div className="flex flex-col md:flex-row md:space-x-11 space-y-2 md:space-y-0">
-                                                <p className="text-ash text-sm">20/05/2021</p>
-                                                <p className="text-sm">20/05/2025</p>
-                                            </div>
-                                        </div>
-                            </div>
-                            <div className="shadow-md p-6 rounded hover:bg-yellowBg">
-                                <h5 className=" text-base font-bold mb-4">Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero’s 1scentury BC text De Finibus Bonorum et Malorum.</h5>
-                                    <p className="md:text-base text-sm mb-8">
-                                        Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. “It’s not Latin, though it looks like it,
-                                        and it actually says nothing,” Before & After magazine answered a curious reader, “Its ‘words’ loosely approximate the frequency
-                                        with which letters occur in English, which is why at a glance it looks pretty real. Until, the prevailing view assumed lorem ipsum 
-                                        was born as a nonsense text. “It’s not Latin, though it looks like it, and it actually says nothing,” Before & After magazine answered 
-                                        a curious reader, “Its ‘words’ loosely approximate the frequency with which letters occur in English, which is why at a glance it looks pretty real.
-                                    </p>
-                                        
-                                        <div className="flex flex-col md:flex-row justify-between text-center md:text-left space-y-2 md:space-y-0 mb-3">
-                                        <Link to='singleItem' className="text-btn text-sm">View Details</Link>
-                                        <div className="flex flex-col md:flex-row md:space-x-11 space-y-2 md:space-y-0">
-                                                <p className="text-ash text-sm">20/05/2021</p>
-                                                <p className="text-sm">20/05/2025</p>
-                                            </div>
-                                        </div>
-                            </div>
-                            <div className="shadow-md p-6 rounded hover:bg-yellowBg">
-                                <h5 className=" text-base font-bold mb-4">Lorem ipsum began as scrambled, nonsensical Latin derived from Cicero’s 1scentury BC text De Finibus Bonorum et Malorum.</h5>
-                                    <p className="md:text-base text-sm mb-8">
-                                        Until recently, the prevailing view assumed lorem ipsum was born as a nonsense text. “It’s not Latin, though it looks like it,
-                                        and it actually says nothing,” Before & After magazine answered a curious reader, “Its ‘words’ loosely approximate the frequency
-                                        with which letters occur in English, which is why at a glance it looks pretty real. Until, the prevailing view assumed lorem ipsum 
-                                        was born as a nonsense text. “It’s not Latin, though it looks like it, and it actually says nothing,” Before & After magazine answered 
-                                        a curious reader, “Its ‘words’ loosely approximate the frequency with which letters occur in English, which is why at a glance it looks pretty real.
-                                    </p>
-                                        
-                                        <div className="flex flex-col md:flex-row justify-between text-center md:text-left space-y-2 md:space-y-0 mb-3">
-                                        <Link to='singleItem' className="text-btn text-sm">View Details</Link>
-                                        <div className="flex flex-col md:flex-row md:space-x-11 space-y-2 md:space-y-0">
-                                                <p className="text-ash text-sm">20/05/2021</p>
-                                                <p className="text-sm">20/05/2025</p>
-                                            </div>
-                                        </div>
-                            </div>
-                        </div>
+                
+                        {posts.length ? (
+                            <Feed posts={posts} />
+                            ) : (
+                            <p style={{ marginTop: "2rem" }}>
+                                No posts to display.
+                            </p>
+                        )}
+                    
+                   
                 </div> 
             </div>
         </>
