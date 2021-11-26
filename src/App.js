@@ -174,10 +174,10 @@ function App() {
       
         <Navigation links={links} onClick={onClick} active={active}/>
         <Routes>
-          <Route path='/' element={<MyBuckets secondLinks={secondLinks} posts={posts}/>}/>
+          <Route path='/buckets' element={<MyBuckets secondLinks={secondLinks} posts={posts}/>}/>
           <Route path='/login' element={<Login firstLinks={firstLinks}  email={email} setEmail={setEmail} password={password} 
           setPassword={setPassword} LoginSubmit={LoginSubmit}/>}/>
-          <Route path='/register' element={<Register firstLinks={firstLinks} fullname={fullname} 
+          <Route path='/' element={<Register firstLinks={firstLinks} fullname={fullname} 
           setFullname={setFullname} email={email} setEmail={setEmail} password={password} 
           setPassword={setPassword} RegisterSubmit={RegisterSubmit}/>}/>
           <Route path='/addItem' element={<AddItem secondLinks={secondLinks} futureDate={futureDate} 
