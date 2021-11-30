@@ -19,7 +19,7 @@ function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTi
                     <form className="space-y-7" onSubmit={handleSubmit}>
                         <div className="">
                         <label htmlFor="date" className="block mb-2 text-base">Date in the future</label>
-                        <input type="text" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={futureDate} onChange={(e) => setFutureDate(e.target.value)} />
+                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={futureDate} onChange={(e) => setFutureDate(e.target.value)} />
                         </div>
                         <div className="">
                         <label htmlFor="title" className="block mb-2 text-base">Title</label>

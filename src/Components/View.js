@@ -24,14 +24,14 @@ function View( {post, key, editFutureDate, editTitle, editDetails, setEditFuture
         <>
            {editTitle && 
             <>
-                 <div className="container max-w-screen-sm md:px-12">
-               <div className=" my-28 px-9 " key={key}>
+                 <div className="container max-w-screen-sm md:px-12" >
+               <div className=" my-28 px-9 " key={key} >
                
 
-               <form className="space-y-7" onSubmit={(e) => e.preventDefault()}>
-                        <div className="">
+               <form className="space-y-7" onSubmit={(e) => e.preventDefault()} >
+                        <div className="" >
                         <label htmlFor="date" className="block mb-2 text-base">Date in the future</label>
-                        <input type="text" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={editFutureDate} onChange={(e) => setEditFutureDate(e.target.value)} />
+                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={editFutureDate} onChange={(e) => setEditFutureDate(e.target.value)} />
                         </div>
                         <div className="">
                         <label htmlFor="title" className="block mb-2 text-base">Title</label>

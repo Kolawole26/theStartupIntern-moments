@@ -2,14 +2,45 @@ import React from 'react'
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import Feed from '../Components/Feed';
+import api from '../api/Url'
 
 
-function MyBuckets( {secondLinks, posts} ) {
+function MyBuckets( {secondLinks, posts, setPosts} ) {
 
     useEffect(() => {
         secondLinks()
 
      });
+
+     useEffect(() => {
+        const getProfile = async () => {
+          let info = localStorage.getItem("user-info");
+          info = JSON.parse(info);
+          const config = {
+            headers: {
+                Authorization: info.token
+            }
+        }
+          try {
+            const response = await api.get('/moment', config);
+            setPosts(response.data.data)
+            console.log(response.data.data)
+          } catch (err) {
+            if (err.response) {
+              // Not in the 200 response range 
+              console.log(err.response.data);
+              console.log(err.response.status);
+              console.log(err.response.headers);
+            } else {
+              console.log(`Error: ${err.message}`);
+            }
+          }
+          
+        }
+    
+        
+        getProfile();
+      }, [setPosts])
 
     return (
         <>

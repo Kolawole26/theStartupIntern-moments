@@ -8,7 +8,7 @@ function Navigation( { onClick, active, links }) {
           <header className="relative bg-primary py-3">
                <div className=" mx-auto max-w-7xl flex items-center justify-between py-2.5 md:px-12 px-9">
                    <div className="">
-                       <h1><Link to='/' className="text-white font-bold md:text-xl italic">Eventful Momemts.</Link></h1>
+                       <h1 className="text-white font-bold md:text-xl italic">Eventful Momemts.</h1>
                    </div>
 
                     <div onClick={onClick} className={`md:hidden`}>
@@ -21,7 +21,7 @@ function Navigation( { onClick, active, links }) {
                            {links ? 
                             <>
                                  <li className="list-none md:mr-5">
-                                <Link to='/login' className=" flex w-full text-base cursor-pointer pt-2.5 px-9 md:px-2.5 text-white">
+                                <Link to='/' className=" flex w-full text-base cursor-pointer pt-2.5 px-9 md:px-2.5 text-white">
                                     Login
                                 </Link>
                            </li>
@@ -34,12 +34,12 @@ function Navigation( { onClick, active, links }) {
                             :
                             <>
                                 <li className="list-none md:mr-5">
-                                <Link to='/login' className=" flex w-full text-base cursor-pointer pt-2.5 px-9 md:px-2.5 text-white">
+                                <Link to='/' className=" flex w-full text-base cursor-pointer pt-2.5 px-9 md:px-2.5 text-white">
                                     Logout
                                 </Link>
                            </li>
                            <li className="list-none md:mr-5 ">
-                                <Link to='/' className=" flex w-full text-base cursor-pointer pt-2.5 px-9 md:px-2.5 text-white mb-7">
+                                <Link to='/buckets' className=" flex w-full text-base cursor-pointer pt-2.5 px-9 md:px-2.5 text-white mb-7">
                                     My Bucket
                                 </Link>
                            </li>

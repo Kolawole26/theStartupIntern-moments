@@ -3,7 +3,7 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './Pages/Login';
 import Footer from './Components/Footer';
 import Register from './Pages/Register';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import AddItem from './Pages/AddItem';
 import EditItem from './Pages/EditItem';
 import MyBuckets from './Pages/MyBuckets';
@@ -24,43 +24,16 @@ function App() {
   const [editTitle, setEditTitle] = useState("");
   const [editDetails, setEditDetails] = useState("");
   const [editFutureDate, setEditFutureDate] = useState("");
+  const [errorFullname, setErrorFullname] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorLogin, setErrorLogin] = useState("");
+  const [errorRegister, setErrorRegister] = useState("");
   
   const navigate = useNavigate();
   
   let info = localStorage.getItem("user-info");
     info = JSON.parse(info);
-    
-  
-  useEffect(() => {
-    const getProfile = async () => {
-      let info = localStorage.getItem("user-info");
-      info = JSON.parse(info);
-      const config = {
-        headers: {
-            Authorization: info.token
-        }
-    }
-      try {
-        const response = await api.get('/moment', config);
-        setPosts(response.data.data)
-        console.log(response.data.data)
-      } catch (err) {
-        if (err.response) {
-          // Not in the 200 response range 
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
-        }
-      }
-      
-    }
-
-    
-    getProfile();
-  }, [])
-
 
 
     const onClick = () => {
@@ -78,6 +51,7 @@ function App() {
 
       const RegisterSubmit = async (e) => {
         e.preventDefault();
+        checkInputs();
         const details = {fullname, email, password}
         try {
           const response = await api.post('/users/signup', details);
@@ -86,15 +60,20 @@ function App() {
           setEmail('');
           setPassword('');
           localStorage.setItem("user-info", JSON.stringify(response.data));
-          navigate('/login');
+          setErrorRegister("")
+          navigate('/');
+          alert('You have succesfully Register')
         } catch (err) {
           console.log(`Error: ${err.message}`);
+          setErrorRegister('Registration failed, Please try again');
+          
         }
      
       }
         
       const LoginSubmit = async (e) => {
         e.preventDefault();
+        checkInputs();
         const details = { email, password}
         try {
           const response = await api.post('/users/login', details);
@@ -102,12 +81,59 @@ function App() {
           setEmail('');
           setPassword('');
           localStorage.setItem("user-info", JSON.stringify(response.data));
-          navigate('/');
+          setErrorLogin("")
+          navigate('/buckets');
+          alert('Welcome!!! You have succesfully Login')
         } catch (err) {
           console.log(`Error: ${err.message}`);
+            setErrorLogin('Login failed, Please try again');
         }
       
   }
+
+  function checkInputs() {
+
+    
+  //   function isEmail(email) {
+  //     return /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email);
+  // }
+
+    
+
+
+    if (fullname === '') {
+      
+        setErrorFullname( 'Fullname cannot be empty');
+    }
+    
+    else {
+      setErrorFullname("");
+    }
+    
+    if (email === '') {
+      
+        setErrorEmail( 'Email cannot be empty');
+    }
+    
+    else {
+      setErrorEmail("");
+    }
+    
+    
+    if (password === '') {
+      
+        setErrorPassword( 'Password cannot be empty');
+    }
+    
+    else {
+      setErrorPassword("");
+    }
+    
+
+}
+
+
+
 
   
 
@@ -119,16 +145,17 @@ function App() {
           Authorization: info.token
       }
   }
-    const detail = {title, details, futureDate}
+    const detail = {title: title, details: details, futureDate: futureDate}
     try {
       const response = await api.post('/moment', detail, config);
-      
+    
       console.log(response.request);
       
+     
       setFutureDate('');
       setTitle('');
       setDetails('');
-      navigate('/');
+      navigate('/buckets');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -143,7 +170,7 @@ function App() {
   }
     try {
       await api.delete(`/moment/${id}`, config);
-      navigate('/');
+      navigate('/buckets');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -152,7 +179,7 @@ function App() {
 
   const handleEdit = async (id) => {
    
-    const updatedMoment = {editTitle, editDetails, editFutureDate };
+    const updatedMoment = {title: editTitle, details: editDetails, futureDate: editFutureDate };
     const config = {
       headers: {
           Authorization: info.token
@@ -164,7 +191,7 @@ function App() {
       setEditTitle('');
       setEditDetails('');
       setEditFutureDate('');
-      navigate('/');
+      navigate('/buckets');
     } catch (err) {
       console.log(`Error: ${err.message}`);
     }
@@ -176,12 +203,12 @@ function App() {
       
         <Navigation links={links} onClick={onClick} active={active}/>
         <Routes>
-          <Route path='/' element={<MyBuckets secondLinks={secondLinks} posts={posts}/>}/>
-          <Route path='/login' element={<Login firstLinks={firstLinks}  email={email} setEmail={setEmail} password={password} 
-          setPassword={setPassword} LoginSubmit={LoginSubmit}/>}/>
+          <Route path='/buckets' element={<MyBuckets secondLinks={secondLinks} posts={posts} setPosts={setPosts} />}/>
+          <Route path='/' element={<Login firstLinks={firstLinks}  email={email} setEmail={setEmail} password={password} 
+          setPassword={setPassword} LoginSubmit={LoginSubmit} errorEmail={errorEmail} errorPassword={errorPassword} errorLogin={errorLogin}  />}/>
           <Route path='/register' element={<Register firstLinks={firstLinks} fullname={fullname} 
           setFullname={setFullname} email={email} setEmail={setEmail} password={password} 
-          setPassword={setPassword} RegisterSubmit={RegisterSubmit}/>}/>
+          setPassword={setPassword} RegisterSubmit={RegisterSubmit} errorFullname={errorFullname} errorEmail={errorEmail} errorPassword={errorPassword} errorRegister={errorRegister} />}/>
           <Route path='/addItem' element={<AddItem secondLinks={secondLinks} futureDate={futureDate} 
           setFutureDate={setFutureDate} title={title} setTitle={setTitle} details={details} 
           setDetails={setDetails} handleSubmit={handleSubmit}/>}/>
