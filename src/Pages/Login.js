@@ -1,5 +1,7 @@
 import React from 'react'
 import { useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 
 
 
@@ -37,6 +39,8 @@ function Login( {firstLinks, email, setEmail, password, setPassword, LoginSubmit
                         </div>
                         <button className="bg-btn p-3 mx-auto rounded-lg text-white w-full hover:bg-blue-500 transition ease-in-out duration-300">Login</button>
                         {errorLogin && <span className=" text-xs text-red-600">{errorLogin}</span>}
+
+                        <h4 className="text-btn text-sm"><Link to='/register'>Sign up <ArrowRightAltIcon/></Link></h4>
                     </form>
                </div>
            </div>
