@@ -86,13 +86,9 @@ function MyBuckets( {secondLinks, posts, setPosts, user, setUser} ) {
                         <p className="md:text-xl text-base mb-4">Here are items in your eventful moment bucket.</p>
                     </header>
                 
-                        {posts.length ? (
+                        
                             <Feed posts={posts} />
-                            ) : (
-                            <p style={{ marginTop: "2rem" }}  >
-                                No posts to display.
-                            </p>
-                        )}
+                            
                     
                    
                 </div> 
