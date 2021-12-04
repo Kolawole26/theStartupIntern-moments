@@ -6,7 +6,8 @@ function Moment( {post} ) {
     
     return (
         <>
-           <div className=" grid md:grid-cols-2 grid-cols-1 gap-5">{post.data.map((data) => { 
+           
+               <div className=" grid md:grid-cols-2 grid-cols-1 gap-5">{post.data.map((data) => { 
                const date = data.futureDate
                return  <div key={data._id} >
                             <div className=" grid shadow-md p-6 rounded hover:bg-yellowBg">
@@ -19,14 +20,14 @@ function Moment( {post} ) {
                                         <Link to={`/singleItem/${data._id}`} className="text-btn text-sm">View Details</Link>
                                         <div className="flex flex-col md:flex-row md:space-x-11 space-y-2 md:space-y-0">
                                                 <p className="text-ash text-sm">20/05/2021</p>
-                                                <p className="text-sm">{dateFormat(date, "paddedShortDate")}</p>
+                                                <p className="text-sm">{dateFormat(date, "dd/mm/yyyy")}</p>
                                             </div>
                                         </div>
                             </div>
-                        </div>
-                     
+                        </div> 
                
-           })}</div> 
+           })}
+           </div>
            
         </>
     )

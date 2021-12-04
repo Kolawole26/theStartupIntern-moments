@@ -11,6 +11,7 @@ import SingleItem from './Pages/SingleItem';
 import Navigation from './Components/Navigation';
 import api from './api/Url.js'
 import {useNavigate} from 'react-router-dom';
+import ForgetPassword from './Pages/ForgetPassword';
 
 function App() {
   const [active, setActive] = useState(false);
@@ -29,6 +30,8 @@ function App() {
   const [errorPassword, setErrorPassword] = useState("");
   const [errorLogin, setErrorLogin] = useState("");
   const [errorRegister, setErrorRegister] = useState("");
+  const [errorForget, setErrorForget] = useState("");
+  const [user, setUser] = useState([]);
   
   const navigate = useNavigate();
   
@@ -49,6 +52,9 @@ function App() {
             setLinks(false)
     }
 
+      
+     
+    
       const RegisterSubmit = async (e) => {
         e.preventDefault();
         checkInputs();
@@ -87,6 +93,23 @@ function App() {
         } catch (err) {
           console.log(`Error: ${err.message}`);
             setErrorLogin('Login failed, Please try again');
+        }
+      
+  }
+      const ForgetPasswordSubmit = async (e) => {
+        e.preventDefault();
+        checkInputs();
+        const details = { email }
+        try {
+          const response = await api.post('/users/forgotPassword', details);
+          console.log(response.request);
+          setEmail('');
+          setErrorForget("")
+          alert('Token have been sent to your email!')  
+          navigate('/');
+        } catch (err) {
+          console.log(`Error: ${err.message}`);
+            setErrorForget('failed, Please try again');
         }
       
   }
@@ -203,7 +226,7 @@ function App() {
       
         <Navigation links={links} onClick={onClick} active={active}/>
         <Routes>
-          <Route path='/buckets' element={<MyBuckets secondLinks={secondLinks} posts={posts} setPosts={setPosts} />}/>
+          <Route path='/buckets' element={<MyBuckets secondLinks={secondLinks} posts={posts} setPosts={setPosts} user={user} setUser={setUser} />}/>
           <Route path='/' element={<Login firstLinks={firstLinks}  email={email} setEmail={setEmail} password={password} 
           setPassword={setPassword} LoginSubmit={LoginSubmit} errorEmail={errorEmail} errorPassword={errorPassword} errorLogin={errorLogin}  />}/>
           <Route path='/register' element={<Register firstLinks={firstLinks} fullname={fullname} 
@@ -216,6 +239,7 @@ function App() {
           setEditFutureDate={setEditFutureDate} editTitle={editTitle} setEditTitle={setEditTitle} editDetails={editDetails} 
           setEditDetails={setEditDetails} handleEdit={handleEdit} posts={posts} />}/>
           <Route path='/singleItem/:id' element={<SingleItem secondLinks={secondLinks} posts={posts} handleDelete={handleDelete} />}/>
+          <Route path='/login/forgetpassword' element={<ForgetPassword ForgetPasswordSubmit={ForgetPasswordSubmit} errorForget={errorForget} email={email} setEmail={setEmail} errorEmail={errorEmail} />}/>
         </Routes>
         <Footer />
       

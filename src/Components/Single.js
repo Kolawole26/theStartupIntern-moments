@@ -13,11 +13,11 @@ function Single( {post, handleDelete} ) {
         <>
             {datas && 
                 <>
-                    <div className="md:container  md:mx-auto" >
+                    <div className="md:container  md:mx-auto h-screen" >
                 <div className=" my-24 px-9 max-w-7xl mx-auto">
                     <header className=" mb-11">
                         <h1 className="md:text-4xl font-bold text-2xl mb-4">{datas.title}</h1>
-                        <p className="text-btn text-sm">{dateFormat(date, "paddedShortDate")}</p> 
+                        <p className="text-btn text-sm">{dateFormat(date, "dd/mm/yyyy")}</p> 
                     </header>
                     <section>
                         <div className="space-y-7 mb-20 md:text-justify">
