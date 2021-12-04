@@ -72,7 +72,7 @@ function MyBuckets( {secondLinks, posts, setPosts, user, setUser} ) {
         <>
            
 
-           <div className="md:container  md:mx-auto h-screen">
+           <div className="md:container  md:mx-auto ">
                 <div className=" my-24 px-9 max-w-7xl mx-auto">
                     <header className="text-center md:text-left mb-16">
                         <div className="flex md:flex-row justify-between flex-col  md:space-y-0 space-y-3 mb-4 md:mb-0">

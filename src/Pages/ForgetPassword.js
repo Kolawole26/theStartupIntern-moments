@@ -3,7 +3,7 @@ import React from 'react'
 function ForgetPassword( { ForgetPasswordSubmit, errorForget, email, setEmail, errorEmail} ) {
     return (
         <>
-            <div className="container max-w-screen-sm mx-auto">
+            <div className="container max-w-screen-sm mx-auto md:min-h-screen">
                <div className="a my-28 px-9 ">
                     <form className="space-y-7" onSubmit={ForgetPasswordSubmit}>
                         <div className="">

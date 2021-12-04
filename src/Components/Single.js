@@ -13,7 +13,7 @@ function Single( {post, handleDelete} ) {
         <>
             {datas && 
                 <>
-                    <div className="md:container  md:mx-auto h-screen" >
+                    <div className="md:container  md:mx-auto md:min-h-screen" >
                 <div className=" my-24 px-9 max-w-7xl mx-auto">
                     <header className=" mb-11">
                         <h1 className="md:text-4xl font-bold text-2xl mb-4">{datas.title}</h1>
