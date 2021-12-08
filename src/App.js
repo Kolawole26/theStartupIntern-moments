@@ -31,6 +31,7 @@ function App() {
   const [errorLogin, setErrorLogin] = useState("");
   const [errorRegister, setErrorRegister] = useState("");
   const [errorForget, setErrorForget] = useState("");
+  const [errorSubmit, setErrorSubmit] = useState("");
   const [user, setUser] = useState([]);
   
   const navigate = useNavigate();
@@ -178,9 +179,11 @@ function App() {
       setFutureDate('');
       setTitle('');
       setDetails('');
+      setErrorSubmit('');
       navigate('/buckets');
     } catch (err) {
       console.log(`Error: ${err.message}`);
+      setErrorSubmit('failed Please try again. Make sure the Date is a future Date');
     }
  
   }
@@ -214,9 +217,11 @@ function App() {
       setEditTitle('');
       setEditDetails('');
       setEditFutureDate('');
+      setErrorSubmit('')
       navigate('/buckets');
     } catch (err) {
       console.log(`Error: ${err.message}`);
+      setErrorSubmit('failed Please try again. Make sure the Date is a future Date');
     }
   }
 
@@ -234,10 +239,10 @@ function App() {
           setPassword={setPassword} RegisterSubmit={RegisterSubmit} errorFullname={errorFullname} errorEmail={errorEmail} errorPassword={errorPassword} errorRegister={errorRegister} />}/>
           <Route path='/addItem' element={<AddItem secondLinks={secondLinks} futureDate={futureDate} 
           setFutureDate={setFutureDate} title={title} setTitle={setTitle} details={details} 
-          setDetails={setDetails} handleSubmit={handleSubmit}/>}/>
+          setDetails={setDetails} handleSubmit={handleSubmit} errorSubmit={errorSubmit} />}/>
           <Route path='/updateItem/:id' element={<EditItem secondLinks={secondLinks} editFutureDate={editFutureDate} 
           setEditFutureDate={setEditFutureDate} editTitle={editTitle} setEditTitle={setEditTitle} editDetails={editDetails} 
-          setEditDetails={setEditDetails} handleEdit={handleEdit} posts={posts} />}/>
+          setEditDetails={setEditDetails} handleEdit={handleEdit} posts={posts} errorSubmit={errorSubmit} />}/>
           <Route path='/singleItem/:id' element={<SingleItem secondLinks={secondLinks} posts={posts} handleDelete={handleDelete} />}/>
           <Route path='/login/forgetpassword' element={<ForgetPassword ForgetPasswordSubmit={ForgetPasswordSubmit} errorForget={errorForget} email={email} setEmail={setEmail} errorEmail={errorEmail} />}/>
         </Routes>

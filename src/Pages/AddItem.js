@@ -1,7 +1,7 @@
 import React from 'react';
 import { useEffect } from 'react';
 
-function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTitle, setDetails, handleSubmit} ) {
+function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTitle, setDetails, handleSubmit, errorSubmit} ) {
 
     useEffect(() => {
         secondLinks()
@@ -31,7 +31,7 @@ function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTi
                         </div>
                         
                         <button className="bg-btn p-3 mx-auto rounded-lg text-white w-full hover:bg-blue-500 transition ease-in-out duration-300 mb-4">Save</button>
-                        
+                        {errorSubmit && <span className=" text-xs text-red-600">{errorSubmit}</span>}
                     </form>
                </div>
            </div>  

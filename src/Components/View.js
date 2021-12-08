@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import dateFormat from "dateformat";
 
 
-function View( {post, key, editFutureDate, editTitle, editDetails, setEditFutureDate, setEditTitle, setEditDetails, handleEdit} ) {
+function View( {post, key, editFutureDate, editTitle, editDetails, setEditFutureDate, setEditTitle, setEditDetails, handleEdit, errorSubmit} ) {
 
     
     const { id } = useParams();
@@ -43,7 +43,7 @@ function View( {post, key, editFutureDate, editTitle, editDetails, setEditFuture
                         </div>
                         
                         <button className="bg-btn p-3 mx-auto rounded-lg text-white w-full hover:bg-blue-500 transition ease-in-out duration-300 mb-4" onClick={() => handleEdit(datas._id)}>Update</button>
-                        
+                        {errorSubmit && <span className=" text-xs text-red-600">{errorSubmit}</span>}
                     </form>
                </div>
            </div>   
