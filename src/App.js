@@ -34,6 +34,7 @@ function App() {
   const [errorSubmit, setErrorSubmit] = useState("");
   const [user, setUser] = useState([]);
   
+  
   const navigate = useNavigate();
   
   let info = localStorage.getItem("user-info");
@@ -224,6 +225,12 @@ function App() {
       setErrorSubmit('failed Please try again. Make sure the Date is a future Date');
     }
   }
+  // const Datehandle =  (e) => {
+   
+  //   setDateWarn(!dateWarn);
+    
+     
+  // }
 
 
   return (
@@ -239,7 +246,7 @@ function App() {
           setPassword={setPassword} RegisterSubmit={RegisterSubmit} errorFullname={errorFullname} errorEmail={errorEmail} errorPassword={errorPassword} errorRegister={errorRegister} />}/>
           <Route path='/addItem' element={<AddItem secondLinks={secondLinks} futureDate={futureDate} 
           setFutureDate={setFutureDate} title={title} setTitle={setTitle} details={details} 
-          setDetails={setDetails} handleSubmit={handleSubmit} errorSubmit={errorSubmit} />}/>
+          setDetails={setDetails} handleSubmit={handleSubmit} errorSubmit={errorSubmit}  />}/>
           <Route path='/updateItem/:id' element={<EditItem secondLinks={secondLinks} editFutureDate={editFutureDate} 
           setEditFutureDate={setEditFutureDate} editTitle={editTitle} setEditTitle={setEditTitle} editDetails={editDetails} 
           setEditDetails={setEditDetails} handleEdit={handleEdit} posts={posts} errorSubmit={errorSubmit} />}/>

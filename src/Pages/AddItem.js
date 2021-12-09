@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useEffect } from 'react';
 
-function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTitle, setDetails, handleSubmit, errorSubmit} ) {
+function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTitle, setDetails, handleSubmit, errorSubmit, } ) {
+
+    const [dateWarn, setDateWarn] = useState(false);
 
     useEffect(() => {
         secondLinks()
-
+        
      }); 
+
+     const Datehandle = () => {
+         setDateWarn(!dateWarn)
+     }
 
     return (
         <>
@@ -19,7 +25,8 @@ function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTi
                     <form className="space-y-7" onSubmit={handleSubmit}>
                         <div className="">
                         <label htmlFor="date" className="block mb-2 text-base">Date in the future</label>
-                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={futureDate} onChange={(e) => setFutureDate(e.target.value)} />
+                        {dateWarn ? (<span className=" text-sm  text-yellow-400">Make sure the date is a future date</span>) : (<span></span>)}
+                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={futureDate} onChange={(e) => setFutureDate(e.target.value)} onFocus={Datehandle} />
                         </div>
                         <div className="">
                         <label htmlFor="title" className="block mb-2 text-base">Title</label>

@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import dateFormat from "dateformat";
 
 
-function View( {post, key, editFutureDate, editTitle, editDetails, setEditFutureDate, setEditTitle, setEditDetails, handleEdit, errorSubmit} ) {
+function View( {post, key, editFutureDate, editTitle, editDetails, setEditFutureDate, setEditTitle, setEditDetails, handleEdit, errorSubmit, dateWarn, Datehandler} ) {
 
     
     const { id } = useParams();
@@ -31,7 +31,8 @@ function View( {post, key, editFutureDate, editTitle, editDetails, setEditFuture
                <form className="space-y-7" onSubmit={(e) => e.preventDefault()} >
                         <div className="" >
                         <label htmlFor="date" className="block mb-2 text-base">Date in the future</label>
-                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={editFutureDate} onChange={(e) => setEditFutureDate(e.target.value)} />
+                        {dateWarn ? (<span className=" text-sm  text-yellow-400">Make sure the date is a future date</span>) : (<span></span>)}
+                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={editFutureDate} onChange={(e) => setEditFutureDate(e.target.value)} onFocus={Datehandler}  />
                         </div>
                         <div className="">
                         <label htmlFor="title" className="block mb-2 text-base">Title</label>
