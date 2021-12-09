@@ -26,7 +26,7 @@ function AddItem( {secondLinks, futureDate, title, details, setFutureDate, setTi
                         <div className="">
                         <label htmlFor="date" className="block mb-2 text-base">Date in the future</label>
                         {dateWarn ? (<span className=" text-sm  text-yellow-400">Make sure the date is a future date</span>) : (<span></span>)}
-                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={futureDate} onChange={(e) => setFutureDate(e.target.value)} onFocus={Datehandle} />
+                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={futureDate} onChange={(e) => setFutureDate(e.target.value)} onClick={Datehandle} />
                         </div>
                         <div className="">
                         <label htmlFor="title" className="block mb-2 text-base">Title</label>

@@ -32,7 +32,7 @@ function View( {post, key, editFutureDate, editTitle, editDetails, setEditFuture
                         <div className="" >
                         <label htmlFor="date" className="block mb-2 text-base">Date in the future</label>
                         {dateWarn ? (<span className=" text-sm  text-yellow-400">Make sure the date is a future date</span>) : (<span></span>)}
-                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={editFutureDate} onChange={(e) => setEditFutureDate(e.target.value)} onFocus={Datehandler}  />
+                        <input type="date" name="date" className="border-2 border-borderColor py-2.5 rounded-lg pl-4 w-full" value={editFutureDate} onChange={(e) => setEditFutureDate(e.target.value)} onClick={Datehandler}  />
                         </div>
                         <div className="">
                         <label htmlFor="title" className="block mb-2 text-base">Title</label>
